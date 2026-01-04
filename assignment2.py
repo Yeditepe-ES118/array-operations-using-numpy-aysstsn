@@ -26,7 +26,10 @@ def stat():
     
     #make the carrot population below 4000 equal to 0
     
+    new_data = data.copy()
     new_data[new_data[:, 3] < 4000, 3] = 0
+    species_sum = np.sum(new_data[:, 1:], axis = 1)
+    new_data = np.column_stack((new_data, species_sum))
     
     #return results
     
