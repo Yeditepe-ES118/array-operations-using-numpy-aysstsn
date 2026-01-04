@@ -21,11 +21,11 @@ def stat():
     #create ne_data as a copy
     new_data = data.copy()
     
+    #modify carrot population below 40000 to 0
+    new_data[new_data[:, 3] < 40000, 3] = 0
+    
     #append original sum column
     new_data = np.column_stack((data, species_sum))
-    
-    #modify carrot population below 4000 to 0
-    new_data[new_data[:, 3] < 4000, 3] = 0
     
     #return results
     return data, hare, min_year_hare, lynx_avg, new_data
