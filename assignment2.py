@@ -19,14 +19,15 @@ def stat():
     lynx = data[:, 2]
     lynx_avg = np.mean(lynx)
     
-    #modify carrot population below 4000 to 0
-    
-    data[data[:, 3] < 4000, 3] = 0
-    
     #make new_data by adding sum of species
     
     species_sum = np.sum(data[:, 1:], axis=1)
     new_data = np.column_stack((data, species_sum))
+    
+    #modify carrot population below 4000 to 0
+    
+    new_data[new_data[:, 3] < 4000, 3] = 0
+    
     
     #return results
     
